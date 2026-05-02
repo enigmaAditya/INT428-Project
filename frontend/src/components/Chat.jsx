@@ -46,7 +46,7 @@ const Chat = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:5002/api/chat', {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5002/api'}/chat`, {
         message,
         history: newHistory.slice(-5)
       });

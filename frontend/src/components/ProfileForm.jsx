@@ -23,7 +23,7 @@ const ProfileForm = () => {
     const fetchProfile = async () => {
       try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5002/api/profile', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5002/api'}/profile`, {
         headers: { Authorization: `Bearer ${token}` }
       });
         if (res.data) {
@@ -49,7 +49,7 @@ const ProfileForm = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5002/api/profile', formData, {
+      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5002/api'}/profile`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSuccess(true);

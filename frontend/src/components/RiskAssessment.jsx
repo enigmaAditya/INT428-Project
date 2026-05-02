@@ -15,7 +15,7 @@ const RiskAssessment = ({ onComplete }) => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get('http://localhost:5002/api/profile');
+        const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5002/api'}/profile`);
         if (res.data && res.data.experience) {
           setProfile(res.data);
           setStep(4); // Skip to completion screen if profile exists
@@ -82,7 +82,7 @@ const RiskAssessment = ({ onComplete }) => {
 
   const submitProfile = async () => {
     try {
-      await axios.post('http://localhost:5002/api/profile', profile);
+      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5002/api'}/profile`, profile);
       setStep(4);
       if (onComplete) onComplete();
     } catch (error) {

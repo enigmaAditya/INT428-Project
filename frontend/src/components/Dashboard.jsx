@@ -32,7 +32,7 @@ const Dashboard = () => {
     setLoading(true);
     try {
       const symbols = ['RELIANCE.NS', 'TCS.NS', 'AAPL', 'BTC-USD'];
-      const responses = await Promise.all(symbols.map(s => axios.get(`http://localhost:5002/api/market/${s}`)));
+      const responses = await Promise.all(symbols.map(s => axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5002/api'}/market/${s}`)));
       setMarketData(responses.map(r => r.data));
     } catch (error) {
       console.error("Failed to fetch market data", error);
@@ -47,7 +47,7 @@ const Dashboard = () => {
     setActiveChartSymbol(symbol);
     try {
       // Small timeout to ensure the UI feels responsive
-      const res = await axios.get(`http://localhost:5002/api/market/${symbol}/history`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5002/api'}/market/${symbol}/history`);
       if (res.data && res.data.length > 0) {
         setChartData(res.data);
       } else {

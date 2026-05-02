@@ -146,7 +146,7 @@ export const InsightModal = ({ isOpen, onClose }) => {
   const fetchInsight = async () => {
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5002/api/chat', {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5002/api'}/chat`, {
         message: "Give me a 2-sentence highly professional market insight based on current tech trends.",
         history: []
       });
@@ -208,7 +208,7 @@ export const TradeModal = ({ isOpen, onClose, onTradeComplete }) => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5002/api/portfolio', {
+      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5002/api'}/portfolio`, {
         ...formData,
         qty: parseFloat(formData.qty),
         avgCost: parseFloat(formData.price),
