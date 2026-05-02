@@ -76,11 +76,11 @@ const AdvisorPage = () => {
   };
 
   const renderMessageContent = (content) => {
-    const chartMatch = content.match(/\[CHART_DATA:(.*?)\]/);
+    const chartMatch = content.match(/\[CHART_DATA:({[\s\S]*})\]/);
     if (chartMatch) {
       try {
         const chartInfo = JSON.parse(chartMatch[1]);
-        const cleanContent = content.replace(/\[CHART_DATA:.*?\]/, '').trim();
+        const cleanContent = content.replace(chartMatch[0], '').trim();
         return (
           <>
             <div className="prose prose-invert max-w-none opacity-90">
