@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Send, Bot, User, Loader2, Sparkles, TrendingUp, Scale, FileText, BrainCircuit, Zap, Trash2, Maximize2, LineChart as ChartIcon, Microscope } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const DynamicChart = ({ data, symbol }) => (
   <div className="w-full h-48 mt-4 bg-slate-900/50 rounded-xl p-4 border border-white/5">
@@ -83,16 +84,16 @@ const AdvisorPage = () => {
         return (
           <>
             <div className="prose prose-invert max-w-none opacity-90">
-              <ReactMarkdown>{cleanContent}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{cleanContent}</ReactMarkdown>
             </div>
             <DynamicChart data={chartInfo.data} symbol={chartInfo.symbol} />
           </>
         );
       } catch (e) {
-        return <div className="prose prose-invert max-w-none opacity-90"><ReactMarkdown>{content}</ReactMarkdown></div>;
+        return <div className="prose prose-invert max-w-none opacity-90"><ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown></div>;
       }
     }
-    return <div className="prose prose-invert max-w-none opacity-90"><ReactMarkdown>{content}</ReactMarkdown></div>;
+    return <div className="prose prose-invert max-w-none opacity-90"><ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown></div>;
   };
 
   return (

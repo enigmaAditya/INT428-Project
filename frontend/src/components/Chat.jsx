@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { MessageSquare, Send, Bot, User, Loader2, Sparkles, TrendingUp, Scale, FileText, X, Minimize2, Maximize2, Trash2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const Chat = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -120,7 +121,7 @@ const Chat = () => {
                       : 'bg-surface-container border border-neon-green/10 text-left text-on-surface'
                   }`}>
                     {msg.role === 'assistant' ? (
-                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
                     ) : (
                       msg.content
                     )}
