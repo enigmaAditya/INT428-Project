@@ -60,9 +60,9 @@ function App() {
         onProfileClick={() => setIsProfileOpen(true)}
       />
       
-      <main className="transition-all duration-500 pt-20 px-4 max-w-7xl mx-auto">
+      <div className="transition-all duration-500">
         {renderContent()}
-      </main>
+      </div>
       
       {activeTab !== 'AI Advisor' && <Chat />}
 
