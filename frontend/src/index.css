@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-outfit: "Outfit", sans-serif;
+  --font-space: "Space Grotesk", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  
+  /* Market Hall AI Palette */
+  --color-neon-green: #00ff94;
+  --color-neon-blue: #00e383;
+  --color-neon-error: #ffb4ab;
+  --color-surface-dark: #121318;
+  --color-surface-container: #1e1f25;
+  --color-surface-container-high: #292a2f;
+  --color-surface-container-low: #1a1b21;
+  --color-on-surface-variant: #b9cbbb;
+  --color-primary-container: #00ff94;
+  --color-on-primary-container: #00391d;
+}
+
+@utility kinetic-glass {
+  background: rgba(30, 31, 37, 0.4);
+  backdrop-filter: blur(40px);
+  border: 1px solid rgba(227, 225, 233, 0.1);
+}
+
+@utility glass-panel {
+  background: rgba(30, 31, 37, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+@utility neon-glow-primary {
+  box-shadow: 0 0 20px rgba(0, 255, 148, 0.2);
+}
+
+@utility accent-gradient {
+  background: linear-gradient(90deg, #00ff94 0%, #00e383 100%);
+}
+
+@utility glow-text {
+  text-shadow: 0 0 20px rgba(0, 255, 148, 0.4);
+}
+
+@utility bull-text {
+  color: #00ff94;
+  text-shadow: 0 0 10px rgba(0, 255, 148, 0.4);
+}
+
+@utility bear-text {
+  color: #ffb4ab;
+  text-shadow: 0 0 10px rgba(255, 180, 171, 0.4);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-inter);
+  background-color: var(--color-surface-dark);
+  color: #e3e1e9;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-space {
+  font-family: var(--font-space);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-container);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Animated Background */
+.bg-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(0, 255, 148, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(147, 0, 10, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, #0d0e13 0%, #121318 100%);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
